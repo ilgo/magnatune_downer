@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# starts the MagnaDownloader GUI
+#---------------------------------
+
+cd /usr/share/java
+java -jar 
