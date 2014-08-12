@@ -78,13 +78,14 @@
                 <pathelement location="${build.dir}"/>
                 <pathelement path="${java.class.path}"/>
                 <pathelement path="${junit.jar}"/>
+                <pathelement path="${log4j.jar}"/>
             </classpath>
           
             <formatter type="plain"/>
           
             <batchtest fork="yes" todir="${test.reports.dir}">
                 <fileset dir="${test.src.dir}">
-                    <include name="**/*Test*.java"/>
+                    <include name="**/AlbumTest.java"/>
                 </fileset>
             </batchtest>
         </junit>
