@@ -3,15 +3,15 @@
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
 	<target name="create_run_jar">
-		<jar destfile="/home/ilgo/Code/workspace/zen.ilgo.music/resources/magnatune.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="./magnatune.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="zen.ilgo.music.MagnaDownload" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
-			<fileset dir="/home/ilgo/Code/workspace/zen.ilgo.music/bin" />
-			<fileset dir="/home/ilgo/Code/workspace/zen.ilgo.tools/bin" />
-			<zipfileset excludes="META-INF/*.SF" src="/usr/share/java/log4j.jar" />
+			<fileset dir="./bin" />
+			<fileset dir="./bin" />
+			<zipfileset excludes="META-INF/*.SF" src="/usr/share/java/log4j-1.2.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="/usr/share/java/commons-httpclient.jar" />
 		</jar>
 	</target>

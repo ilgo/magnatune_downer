@@ -1,7 +1,6 @@
 *.swp
 *.javac
 *.jar
+*.log
 
-**/xml/
 **/build/
-**/reports/
