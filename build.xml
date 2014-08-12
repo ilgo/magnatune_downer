@@ -1,23 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project zen.ilgo.music">
+<project default="all" name="Magnatune Downloader">
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
-	<target name="create_run_jar">
-		<jar destfile="./magnatune.jar" filesetmanifest="mergewithoutmain">
+	<property name="src.dir" value="./src"/>
+	<property name="src.resource.dir" value="./resources/zen/ilgo/music/resources"/>
+	<property name="build.dir" value="./build"/>
+	<property name="build.resource.dir" value="./build/zen/ilgo/music/resources"/>
+	<property name="test.src.dir" value="./test"/>
+	<property name="test.build.dir" value="./test/build"/>
+	<property name="test.reports.dir" value="./test/reports"/>
+	<property name="junit.jar" value="/usr/share/java/junit4.jar"/>
+	<property name="log4j.jar" value="/usr/share/java/log4j-1.2.jar"/>
+	<property name="jar.name" value="./magnatune.jar"/>
+	<property name="log.config" value="resources/log4j.properties"/>
+
+	<target name="all" depends="build, jar"/>
+
+    <target name='build'>
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}"
+               destdir="${build.dir}"
+               classpath="${log4j.jar}"
+               debug="on"
+               source="1.6" />
+    </target>
+
+	<target name="jar">
+        <delete file="${jar.name}"/>
+        <delete dir="${build.resource.dir}"/>
+        <mkdir dir="${build.resource.dir}"/>
+        <copy todir="${build.resource.dir}">
+            <fileset dir="${src.resource.dir}"/>
+        </copy>
+        <copy file="${log.config}" todir="./build"/>
+		<jar destfile="${jar.name}" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="zen.ilgo.music.MagnaDownload" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
-			<fileset dir="./bin" />
-			<fileset dir="./bin" />
-			<zipfileset excludes="META-INF/*.SF" src="/usr/share/java/log4j-1.2.jar" />
+			<fileset dir="./build" />
+			<zipfileset excludes="META-INF/*.SF" src="${log4j.jar}" />
 			<zipfileset excludes="META-INF/*.SF" src="/usr/share/java/commons-httpclient.jar" />
 		</jar>
+        <chmod file="${jar.name}" perm="+x"/>
 	</target>
-	<target name="copy to MakeRpm">
+
+	<target name="rpm">
 		<exec executable="sh">
 			<arg line="resources/rpmPrep.sh"/>
 		</exec>		
 	</target>
+
+    <target name="test">
+        <mkdir dir="${test.build.dir}"/>
+        <mkdir dir="${test.reports.dir}"/>
+        <delete>
+            <fileset dir="${build.dir}"/>
+            <fileset dir="${test.build.dir}"/>
+            <fileset dir="${test.reports.dir}"/>
+        </delete>
+        <javac srcdir="${src.dir}"
+               destdir="${build.dir}"
+               classpath="${log4j.jar}"
+               debug="on"
+               source="1.6" />
+
+        <javac srcdir="${test.src.dir}"
+               destdir="${test.build.dir}"
+               debug="on"
+               classpath="${build.dir}:${junit.jar}"
+               source="1.6" />
+
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <pathelement location="${test.build.dir}"/>
+                <pathelement location="${build.dir}"/>
+                <pathelement path="${java.class.path}"/>
+                <pathelement path="${junit.jar}"/>
+            </classpath>
+          
+            <formatter type="plain"/>
+          
+            <batchtest fork="yes" todir="${test.reports.dir}">
+                <fileset dir="${test.src.dir}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
 </project>

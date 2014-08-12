@@ -1,4 +1,4 @@
-package zen.ilgo.tools.wget
+package zen.ilgo.tools.wget;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;

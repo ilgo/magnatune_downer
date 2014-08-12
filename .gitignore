@@ -3,4 +3,5 @@
 *.jar
 *.log
 
+**/reports/*
 **/build/
