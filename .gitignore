@@ -1,0 +1,7 @@
+*.swp
+*.javac
+*.jar
+
+**/xml/
+**/build/
+**/reports/
