@@ -1,7 +1,8 @@
 #!/bin/bash
 
 WWW=$1
+PORT=10808
 
-chdir $WWW
-python3 -m http.server 10808
+cd $WWW
+python3 -m http.server $PORT &
 
