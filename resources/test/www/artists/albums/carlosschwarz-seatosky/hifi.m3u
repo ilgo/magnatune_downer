@@ -1,14 +1,4 @@
 #EXTM3U
-#EXTINF:258,Carlos Schwarz - Sea to Sky - Farewell (4:18)
-http://localhost:10808/all/01-Farewell-Carlos_Schwarz.mp3
-#EXTINF:233,Carlos Schwarz - Sea to Sky - The Passage (3:53)
-http://localhost:10808/all/02-The_Passage-Carlos_Schwarz.mp3
-#EXTINF:385,Carlos Schwarz - Sea to Sky - The River (6:25)
-http://localhost:10808/all/03-The_River-Carlos_Schwarz.mp3
-#EXTINF:317,Carlos Schwarz - Sea to Sky - Our World (5:17)
-http://localhost:10808/all/04-Our_World-Carlos_Schwarz.mp3
-#EXTINF:289,Carlos Schwarz - Sea to Sky - Walk of Life (4:49)
-http://localhost:10808/all/05-Walk_of_Life-Carlos_Schwarz.mp3
 #EXTINF:289,Carlos Schwarz - Sea to Sky - The Angel in You (4:49)
 http://localhost:10808/all/06-The_Angel_in_You-Carlos_Schwarz.mp3
 #EXTINF:343,Carlos Schwarz - Sea to Sky - Memoirs (5:43)

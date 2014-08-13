@@ -41,6 +41,7 @@ public class M3uParser {
             if (br.readLine().equals("#EXTM3U")) {
                 while ((info = br.readLine()) != null && info.startsWith("#EXTINF")) {
                     location = br.readLine();
+                    log.debug(location);
                     File destination = new File(baseDir, subDir(info));
                     destination = new File(destination, fileName(location));
                     URL url = new URL(location);
