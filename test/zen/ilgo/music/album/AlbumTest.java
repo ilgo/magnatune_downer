@@ -28,9 +28,11 @@ public class AlbumTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		
-		url = new URL("http://zen.magnatune.com/amelia-danca/hifi.m3u");
-		dir = new File("/home/ilgo/Music/Magnatune");
+	
+        String testResourceDir = System.getProperty("user.home") + "/src/magnatune_downer/resource/test/";	
+		//url = new URL("file:/" + testResourceDir + "hifi.m3u");
+		url = new URL("http://localhost:10808/artists/albums/carlosschwarz-seattosky/hifi.m3u");
+        dir = new File(testResourceDir);
 				
 		wwwFiles = new HashMap<String, Long>(5);
 		for (File file : new File("/var/www/test/all").listFiles()) {
@@ -50,11 +52,9 @@ public class AlbumTest {
 	public void testGetAlbumName() throws M3uException {
 		
 		album = new MagnatuneAlbum(dir, url);
+        album.initAlbum();
 		String albumName = album.getAlbumName();
-		
-		System.out.println("Album Name = " + albumName);
-		
-		assertEquals(albumName, "Amelia Cuni/Danza D Amore");
+		assertEquals("Ray Montford/The Early Sessions", albumName);
 	}
 	
 	@Test

@@ -1,4 +1,5 @@
 *.swp
+*.swo
 *.javac
 *.jar
 *.log
