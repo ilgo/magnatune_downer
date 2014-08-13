@@ -60,7 +60,7 @@ public class MagnatuneAlbum implements IAlbum {
 	 * @throws M3uException if the m3u file cannot be parsed
 	 */
 	public MagnatuneAlbum(File baseDir, URL url) throws M3uException {
-
+        log.info("Base: " + baseDir);
 		this.baseDir = baseDir;
 		this.url = url;
 		log.info(new Date());

@@ -256,7 +256,7 @@ public class SwingUI implements IMusicUI {
 
 						String strUrl = (String) transferable
 								.getTransferData(flavor);
-						addAlbum(strUrl + "hifi.m3u");
+						addAlbum(strUrl + "/hifi.m3u");
 
 					} catch (UnsupportedFlavorException e) {
 						success = false;
