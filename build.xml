@@ -13,6 +13,8 @@
 	<property name="log4j.jar" value="/usr/share/java/log4j-1.2.jar"/>
 	<property name="jar.name" value="./magnatune.jar"/>
 	<property name="log.config" value="resources/log4j.properties"/>
+	<property name="www" value="./resources/test/www"/>
+	<property name="server" value="./pyServer.sh"/>
 
 	<target name="all" depends="build, jar"/>
 
@@ -72,7 +74,9 @@
                classpath="${build.dir}:${junit.jar}"
                source="1.6" />
 
-        <junit printsummary="yes" haltonfailure="yes">
+        <exec dir="${www}" executable="${server}"/>
+
+        <junit printsummary="yes" haltonfailure="no">
             <classpath>
                 <pathelement location="${test.build.dir}"/>
                 <pathelement location="${build.dir}"/>
@@ -89,5 +93,9 @@
                 </fileset>
             </batchtest>
         </junit>
+
+        <exec dir="./" executable="pkill">
+            <arg line="-9 -f 'python3 -m http.server 10808'"/>
+        </exec>
     </target>
 </project>
