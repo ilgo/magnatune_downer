@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#WWW=$1
+WWW=$1
 PORT=10808
 
-#cd $WWW
+cd $WWW
 python3 -m http.server $PORT &
-sleep 3
+

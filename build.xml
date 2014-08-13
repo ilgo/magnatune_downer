@@ -15,7 +15,6 @@
 	<property name="log.config" value="resources/log4j.properties"/>
 	<property name="www" value="./resources/test/www"/>
 	<property name="server" value="./pyServer.sh"/>
-	<property name="download.dir" value="./resources/test/Carlos Schwarz"/>
 
 	<target name="all" depends="build, jar"/>
 
@@ -62,7 +61,6 @@
             <fileset dir="${build.dir}"/>
             <fileset dir="${test.build.dir}"/>
             <fileset dir="${test.reports.dir}"/>
-            <fileset dir="${download.dir}"/>
         </delete>
         <javac srcdir="${src.dir}"
                destdir="${build.dir}"
@@ -73,13 +71,12 @@
         <javac srcdir="${test.src.dir}"
                destdir="${test.build.dir}"
                debug="on"
-               classpath="${build.dir}:${junit.jar}:${log4j.jar}"
+               classpath="${build.dir}:${junit.jar}"
                source="1.6" />
 
-        <copy file="${log.config}" todir="./build"/>
         <exec dir="${www}" executable="${server}"/>
 
-        <junit printsummary="yes" haltonfailure="no" logfailedtests="yes">
+        <junit printsummary="yes" haltonfailure="no">
             <classpath>
                 <pathelement location="${test.build.dir}"/>
                 <pathelement location="${build.dir}"/>
