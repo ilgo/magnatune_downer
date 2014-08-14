@@ -54,6 +54,7 @@
 		</exec>		
 	</target>
 
+    <!--
     <target name="test">
         <mkdir dir="${test.build.dir}"/>
         <mkdir dir="${test.reports.dir}"/>
@@ -98,4 +99,5 @@
             <arg line="-9 -f 'python3 -m http.server 10808'"/>
         </exec>
     </target>
+    -->
 </project>
