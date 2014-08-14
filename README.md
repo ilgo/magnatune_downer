@@ -5,7 +5,6 @@ A very simple Drag'n Drop Swing GUI to download albums from http://magnatune.com
 To build the 'magnatune.jar' the following 2 libraries must be installed.
 
 1. /usr/share/java/log4j-1.2.jar
-
 2. /usr/share/java/commons-httpclient.jar
 
 Just run __ant__ from within *magnatune_downer* directory.
